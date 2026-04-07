@@ -55,7 +55,6 @@ if st.checkbox("Show processed dataset"):
     df['tags'] = df['overview'] + df['genres'] + df['keywords']
     df['tags'] = df['tags'].apply(lambda x: " ".join(x).lower())
     df['tags'] = df['tags'].apply(stem)
-
 return df
 
 
