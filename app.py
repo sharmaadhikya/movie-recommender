@@ -47,8 +47,8 @@ def load_data():
     df['keywords'] = df['keywords'].apply(convert)
 
     df['overview'] = df['overview'].apply(lambda x: x.split())
-
-    df['tags'] = df['overview'] + df['genres'] + df['keywords']  + df['director']
+    
+    df['tags'] = df['overview'] + df['genres'] + df['keywords']
     df['tags'] = df['tags'].apply(lambda x: " ".join(x).lower())
     df['tags'] = df['tags'].apply(stem)
 
