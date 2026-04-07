@@ -44,13 +44,11 @@ def load_data():
     df.dropna(inplace=True)
 
     df['genres'] = df['genres'].apply(convert)
-    df['keywords'] = df['keywords'].apply(convert)
-    df['cast'] = df['cast'].apply(lambda x: convert(x)[:3])
-    df['director'] = df['crew'].apply(get_director)
+    df['keywords'] = df['keywords'].apply(convert
 
     df['overview'] = df['overview'].apply(lambda x: x.split())
 
-    df['tags'] = df['overview'] + df['genres'] + df['keywords'] + df['cast'] + df['director']
+    df['tags'] = df['overview'] + df['genres'] + df['keywords']  + df['director']
     df['tags'] = df['tags'].apply(lambda x: " ".join(x).lower())
     df['tags'] = df['tags'].apply(stem)
 
