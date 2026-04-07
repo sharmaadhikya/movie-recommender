@@ -39,6 +39,10 @@ def stem(text):
 # ----------------------------
 @st.cache_data
 def load_data():
+    st.subheader("📊 Processed Data")
+
+if st.checkbox("Show processed dataset"):
+    st.write(df.head())
     df = pd.read_csv('tmdb_5000_movies.csv')
     df = df[['title','overview','genres','keywords']]
     df.dropna(inplace=True)
@@ -90,11 +94,17 @@ st.title("🎬 Movie Recommendation System")
 movie_name = st.text_input("Enter a movie name")
 
 if st.button("Recommend"):
-    results = recommend(movie_name)
+    movie = movie_name.lower()
 
-    if len(results) == 0:
+    if movie not in df['title'].str.lower().values:
         st.write("❌ Movie not found")
     else:
-        st.write("### Recommended Movies:")
-        for movie in results:
-            st.write("👉", movie)
+        index = df[df['title'].str.lower() == movie].index[0]
+        distances = similarity[index]
+
+        movies_list = sorted(list(enumerate(distances)), reverse=True, key=lambda x: x[1])[1:6]
+
+        st.write("### Recommended Movies with Scores:")
+
+        for i in movies_list:
+            st.write(df.iloc[i[0]].title, "➡️ Score:", round(i[1], 2))
