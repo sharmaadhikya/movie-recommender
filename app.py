@@ -39,7 +39,7 @@ def stem(text):
 # ----------------------------
 @st.cache_data
 def load_data():
-    df = pd.read_csv('https://raw.githubusercontent.com/ashutoshtripathi24/TMDB-5000-Movie-Dataset/master/tmdb_5000_movies.csv')
+   df = pd.read_csv('https://raw.githubusercontent.com/codebasics/py/master/ML/16_recommendation_system/tmdb_5000_movies.csv')
 
     df = df[['title','overview','genres','keywords','cast','crew']]
     df.dropna(inplace=True)
