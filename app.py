@@ -44,7 +44,7 @@ def load_data():
     df.dropna(inplace=True)
 
     df['genres'] = df['genres'].apply(convert)
-    df['keywords'] = df['keywords'].apply(convert
+    df['keywords'] = df['keywords'].apply(convert)
 
     df['overview'] = df['overview'].apply(lambda x: x.split())
 
