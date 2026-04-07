@@ -56,7 +56,7 @@ if st.checkbox("Show processed dataset"):
     df['tags'] = df['tags'].apply(lambda x: " ".join(x).lower())
     df['tags'] = df['tags'].apply(stem)
 
-        return df
+return df
 
 
 df = load_data()
