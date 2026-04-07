@@ -40,7 +40,7 @@ def stem(text):
 @st.cache_data
 def load_data():
     df = pd.read_csv('tmdb_5000_movies.csv')
-    df = df[['title','overview','genres','keywords','cast','crew']]
+    df = df[['title','overview','genres','keywords']]
     df.dropna(inplace=True)
 
     df['genres'] = df['genres'].apply(convert)
